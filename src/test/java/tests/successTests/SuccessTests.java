@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -13,36 +14,23 @@ public class SuccessTests extends BaseTest {
 
 
     protected WebDriver driver;
-    @Test
-    public void testStandardUser(){
+    @Test(dataProvider = "getData", description = "Group of successful login test")
+    public void testSuccessLogin(String username, String password){
         driver.get("https://www.saucedemo.com/");
         LoginPage loginPage = new LoginPage(driver);
         ProductsPage productsPage = new ProductsPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(username, password);
         Assert.assertEquals(productsPage.getPageTitle(), "PRODUCTS");
         Assert.assertEquals(productsPage.getPageUrl(), "https://www.saucedemo.com/inventory.html");
     }
-    @Test
-    public void testProblemUser(){
-        driver.get("https://www.saucedemo.com/");
-        LoginPage loginPage = new LoginPage(driver);
-        ProductsPage productsPage = new ProductsPage(driver);
-        loginPage.login("problem_user", "secret_sauce");
-        Assert.assertEquals(productsPage.getPageTitle(), "PRODUCTS");
-        Assert.assertEquals(productsPage.getPageUrl(), "https://www.saucedemo.com/inventory.html");
 
+    @DataProvider
+    public Object[][] getData(){
+        return new Object[][]{
+                {"standard_user", "secret_sauce"},
+                {"problem_user", "secret_sauce"},
+                {"performance_glitch_user", "secret_sauce"}
+        };
     }
-
-    @Test
-    public void testPerfomanceUser(){
-        driver.get("https://www.saucedemo.com/");
-        LoginPage loginPage = new LoginPage(driver);
-        ProductsPage productsPage = new ProductsPage(driver);
-        loginPage.login("performance_glitch_user", "secret_sauce");
-        Assert.assertEquals(productsPage.getPageTitle(), "PRODUCTS");
-        Assert.assertEquals(productsPage.getPageUrl(), "https://www.saucedemo.com/inventory.html");
-
-    }
-
 
 }
