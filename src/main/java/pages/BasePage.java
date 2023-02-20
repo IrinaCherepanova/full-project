@@ -28,14 +28,17 @@ public class BasePage {
     }
 
     public void clickElement(WebElement element) {
-        System.out.println("Trying to click element" + element);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
-        System.out.println("Successful click on element" + element);
     }
 
     public String getElementText(WebElement element) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
         return element.getText();
+    }
+
+    public String getPageUrl(){
+        return driver.getCurrentUrl();
     }
 
     public void sleep(int timeout){
