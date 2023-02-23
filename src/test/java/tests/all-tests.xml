@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="All Tests">
+    <test name="Sanity">
+        <classes>
+            <class name="tests.sanityTests.BuyProductsTests"></class>
+        </classes>
+    </test> <!-- Sanity -->
+
+    <test name="Success Test">
+        <classes>
+            <class name="tests.successTests.SuccessTests">
+                <methods>
+                    <include name="testSuccessLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Success Test -->
+
+    <test name="Failed Test">
+        <classes>
+            <class name="tests.errorHandlingTests.ErrorHandlingTests" >
+                <methods>
+    <!--                <exclude name="errorHandlingLoginTests"/>-->
+                    <include name="errorHandlingLoginTests"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Sanity -->
+</suite> <!-- Default Suite -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
