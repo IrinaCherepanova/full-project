@@ -15,4 +15,4 @@ jobs:
         - name: Install Chrome Browser
           uses: browser-actions/setup-chrome@v1.1.0
           
-        - run: chrome --version
+        - run: echo Hello From GitHub Actions
