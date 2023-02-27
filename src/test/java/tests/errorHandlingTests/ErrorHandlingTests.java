@@ -27,7 +27,7 @@ public class ErrorHandlingTests extends BaseTest {
                 {Credentials.LOCKED_OUT_USER, Credentials.CORRECT_PASSWORD, "Epic sadface: Sorry, this user has been locked out."},
                 {Credentials.EMPTY_USERNAME, Credentials.EMPTY_PASSWORD, LoginErrorMessages.EMPTY_USERNAME},
                 {Credentials.EMPTY_USERNAME, Credentials.CORRECT_PASSWORD, LoginErrorMessages.EMPTY_USERNAME},
-                {Credentials.STANDARD_USER, Credentials.EMPTY_PASSWORD, LoginErrorMessages.EMPTY_USERNAME},
+                {Credentials.STANDARD_USER, Credentials.EMPTY_PASSWORD, "Epic sadface: Password is required"},
                 {Credentials.STANDARD_USER, "dfdfgdfg", LoginErrorMessages.INCORRECT_USERNAME_OR_PASSWORD},
                 {"dfgdfg", Credentials.CORRECT_PASSWORD, LoginErrorMessages.INCORRECT_USERNAME_OR_PASSWORD},
         };
