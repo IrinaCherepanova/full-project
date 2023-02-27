@@ -29,3 +29,10 @@ jobs:
 
         - name: Run Tests with Maven
           run: mvn clean test
+
+        - name: Test Reporter
+          uses: dorny/test-reporter@v1.6.0
+          with:
+            name: Collecting Report
+            path: target/surefire-reports/junitreports/TEST-tests.*.xml
+            reporter: java-junit
