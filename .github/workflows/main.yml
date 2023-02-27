@@ -24,7 +24,7 @@ jobs:
           uses: actions/setup-java@v3.10.0
           with:
             java-version: '11'
-            distribution: 'oracle'
+            distribution: 'temurin'
             cache: 'maven'
 
         - name: Run Tests with Maven
